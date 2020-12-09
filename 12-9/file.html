@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>文件上传</title>
+	<script src="public/jquery-3.4.1.min.js"></script>
+	<link rel="stylesheet" href="public/bootstrap/css/bootstrap.min.css">
+	<script src="public/bootstrap/js/bootstrap.min.js"></script>
+
+	<style type="text/css">
+	table{
+		margin: 0 auto;
+	}
+	tr{
+		text-align: center;
+		/*width: 100px;
+		height: 5px;*/
+	}
+	</style>
+</head>
+<body>
+	<form action="file.php" method="post" enctype="multipart/form-data">
+		<label for="file">文件名：</label>
+		<input type="file" name="file" id="file"><br>
+		<input type="submit" name="submit" value="提交" >
+	</form>
+	
+	<!-- <button type="submit" id="show" class="btn btn-info">显示详细</button> -->
+	<table border="1" cellpadding="0" cellspacing="0"  class="table">
+		<tr>
+			<th>编号</th>
+			<th>文件名称</th>
+			<th>文件大小</th>
+			<th>时间</th>
+		</tr>
+		
+		<?php foreach($listarr as $k=>$v) {?>
+			<tr>
+				<td><?php echo $v['id']?></td>
+				<td><?php echo $v['name']?></td>
+				<td><?php echo $v['size']?>kB</td>
+				<td><?php echo date('Y-m-d H:i:s',$v['time'])?></td>
+			</tr>	
+		<?php }?>
+	</table>
+	
+</body>
+</html>
